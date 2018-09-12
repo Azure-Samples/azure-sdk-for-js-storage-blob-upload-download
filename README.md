@@ -1,57 +1,51 @@
-# Project Name
 
-(short, 1-3 sentenced, description of the project)
+# Azure Storage v10 SDK for JavaScript (preview) Quickstart
 
-## Features
+This repository implements the [quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript (preview)](https://github.com/Azure/azure-storage-js).
 
-This project framework provides the following features:
+## Set up
+First, clone the repository on your machine:
 
-* Feature 1
-* Feature 2
-* ...
+```bash
+git clone https://github.com/Azure-Samples/azure-storage-blob-js.git
+```
 
-## Getting Started
+Then, switch to the appropriate folder:
 
-### Prerequisites
+```bash
+cd azure-storage-blob-js
+```
 
-(ideally very short, if any)
+Next, install the dependencies:
 
-- OS
-- Library version
-- ...
+    npm install
 
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+Finally, rename the file `.env.example` to `.env` and add your values for *AZURE_STORAGE_ACCOUNT_NAME* and *AZURE_STORAGE_ACCOUNT_ACCESS_KEY*.
 
 
-## Demo
+## Running the sample
 
-A demo app is included to show how to use the project.
+To run the sample, run the following command on the terminal:
 
-To run the demo, follow these steps:
+```bash
+npm start
+```
 
-(Add steps to start up the demo)
+The output in the terminal will resemble something like this:
 
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+```bash
+Containers:
+ - container-a
+ - container-b
+Container: "demo" is created
+Blob "quickstart.txt" is uploaded
+Local file "./readme.md" is uploaded
+Blobs in "demo" container:
+ - quickstart.txt
+ - readme-stream.md
+ - readme.md
+Downloaded blob content: "hello Node SDK"
+Block blob "quickstart.txt" is deleted
+Container "demo" is deleted
+Done
+```

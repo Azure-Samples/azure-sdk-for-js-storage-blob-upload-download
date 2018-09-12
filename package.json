@@ -1,0 +1,16 @@
+{
+  "name": "azure-storage-blob-nodejs-v10-quickstart",
+  "version": "1.0.0",
+  "description": "Use the @azure/storage-blob SDK to interact with Azure Blob storage",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Craig Shoemaker <craig@craigshoemaker.net>",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/storage-blob": "^10.0.0-preview",
+    "@types/dotenv": "^4.0.3",
+    "dotenv": "^6.0.0"
+  }
+}
