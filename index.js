@@ -42,9 +42,7 @@ async function uploadLocalFile(containerURL, filePath, aborter) {
     filePath = path.resolve(filePath);
 
     const fileName = path.win32.basename(filePath);
-
-    const blobURL = BlobURL.fromContainerURL(containerURL, fileName);
-    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
 
     return await uploadFileToBlockBlob(aborter.withTimeout(ONE_MINUTE), filePath, blockBlobURL);
 }
@@ -54,9 +52,7 @@ async function uploadStream(containerURL, filePath, aborter) {
     filePath = path.resolve(filePath);
 
     const fileName = path.win32.basename(filePath).replace('.md', '-stream.md');
-
-    const blobURL = BlobURL.fromContainerURL(containerURL, fileName);
-    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
 
     const stream = fs.createReadStream(filePath, {
       highWaterMark: FOUR_MEGABYTES,
