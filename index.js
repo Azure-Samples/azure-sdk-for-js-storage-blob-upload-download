@@ -125,10 +125,10 @@ async function execute() {
     const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
-    blockBlobURL.delete(aborter.withTimeout(ONE_MINUTE))
+    await blockBlobURL.delete(aborter.withTimeout(ONE_MINUTE))
     console.log(`Block blob "${blobName}" is deleted`);
     
-    containerURL.delete(aborter.withTimeout(ONE_MINUTE));
+    await containerURL.delete(aborter.withTimeout(ONE_MINUTE));
     console.log(`Container "${containerName}" is deleted`);
 }
 
