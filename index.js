@@ -1,7 +1,5 @@
-// tslint:disable:no-console
 const {
     Aborter,
-    BlobURL,
     BlockBlobURL,
     ContainerURL,
     ServiceURL,
@@ -25,13 +23,13 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 const ONE_MINUTE = 60 * 1000;
 
-async function showContainerNames(serviceURL, aborter) {
+async function showContainerNames(aborter, serviceURL) {
 
     let response;
     let marker;
 
     do {
-        response = await serviceURL.listContainersSegment(aborter.withTimeout(ONE_MINUTE), marker);
+        response = await serviceURL.listContainersSegment(aborter, marker);
         marker = response.marker;
         for(let container of response.containerItems) {
             console.log(` - ${ container.name }`);
@@ -39,21 +37,21 @@ async function showContainerNames(serviceURL, aborter) {
     } while (marker);
 }
 
-async function uploadLocalFile(containerURL, filePath, aborter) {
+async function uploadLocalFile(aborter, containerURL, filePath) {
 
     filePath = path.resolve(filePath);
 
-    const fileName = path.win32.basename(filePath);
+    const fileName = path.basename(filePath);
     const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
 
-    return await uploadFileToBlockBlob(aborter.withTimeout(ONE_MINUTE), filePath, blockBlobURL);
+    return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
 }
 
-async function uploadStream(containerURL, filePath, aborter) {
+async function uploadStream(aborter, containerURL, filePath) {
 
     filePath = path.resolve(filePath);
 
-    const fileName = path.win32.basename(filePath).replace('.md', '-stream.md');
+    const fileName = path.basename(filePath).replace('.md', '-stream.md');
     const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
 
     const stream = fs.createReadStream(filePath, {
@@ -66,20 +64,20 @@ async function uploadStream(containerURL, filePath, aborter) {
     };
 
     return await uploadStreamToBlockBlob(
-                    aborter.withTimeout(ONE_MINUTE), 
+                    aborter, 
                     stream, 
                     blockBlobURL, 
                     uploadOptions.bufferSize, 
                     uploadOptions.maxBuffers);
 }
 
-async function showBlobNames(containerURL, aborter) {
+async function showBlobNames(aborter, containerURL) {
 
     let response;
     let marker;
 
     do {
-        response = await containerURL.listBlobFlatSegment(aborter.withTimeout(ONE_MINUTE));
+        response = await containerURL.listBlobFlatSegment(aborter);
         marker = response.marker;
         for(let blob of response.segment.blobItems) {
             console.log(` - ${ blob.name }`);
@@ -104,31 +102,31 @@ async function execute() {
     const aborter = Aborter.timeout(30 * ONE_MINUTE);
 
     console.log("Containers:");
-    await showContainerNames(serviceURL, aborter);
+    await showContainerNames(aborter, serviceURL);
 
-    await containerURL.create(aborter.withTimeout(ONE_MINUTE));
+    await containerURL.create(aborter);
     console.log(`Container: "${containerName}" is created`);
 
-    await blockBlobURL.upload(aborter.withTimeout(ONE_MINUTE), content, content.length);
+    await blockBlobURL.upload(aborter, content, content.length);
     console.log(`Blob "${blobName}" is uploaded`);
     
-    await uploadLocalFile(containerURL, localFilePath, aborter);
+    await uploadLocalFile(aborter, containerURL, localFilePath);
     console.log(`Local file "${localFilePath}" is uploaded`);
 
-    await uploadStream(containerURL, localFilePath, aborter);
+    await uploadStream(aborter, containerURL, localFilePath);
     console.log(`Local file "${localFilePath}" is uploaded as a stream`);
 
     console.log(`Blobs in "${containerName}" container:`);
-    await showBlobNames(containerURL, aborter);
+    await showBlobNames(aborter, containerURL);
 
-    const downloadResponse = await blockBlobURL.download(aborter.withTimeout(ONE_MINUTE), 0);
+    const downloadResponse = await blockBlobURL.download(aborter, 0);
     const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
-    await blockBlobURL.delete(aborter.withTimeout(ONE_MINUTE))
+    await blockBlobURL.delete(aborter)
     console.log(`Block blob "${blobName}" is deleted`);
     
-    await containerURL.delete(aborter.withTimeout(ONE_MINUTE));
+    await containerURL.delete(aborter);
     console.log(`Container "${containerName}" is deleted`);
 }
 
