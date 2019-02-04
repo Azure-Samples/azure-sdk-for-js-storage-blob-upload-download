@@ -6,13 +6,13 @@ This repository implements the [quickstart](http://docs.microsoft.com/azure/stor
 First, clone the repository on your machine:
 
 ```bash
-git clone https://github.com/Azure-Samples/azure-storage-blob-js.git
+git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
 Then, switch to the appropriate folder:
 
 ```bash
-cd azure-storage-blob-js
+cd azure-storage-js-v10-quickstart
 ```
 
 Next, install the dependencies:
