@@ -1,4 +1,3 @@
-
 # Quickstart - JavaScript SDK v10 for Azure Storage
 
 This repository implements the [quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
@@ -7,13 +6,13 @@ This repository implements the [quickstart](http://docs.microsoft.com/azure/stor
 First, clone the repository on your machine:
 
 ```bash
-git clone https://github.com/Azure-Samples/azure-storage-blob-js.git
+git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
 Then, switch to the appropriate folder:
 
 ```bash
-cd azure-storage-blob-js
+cd azure-storage-js-v10-quickstart
 ```
 
 Next, install the dependencies:
