@@ -1,3 +1,15 @@
+---
+page_type: sample
+name: "Using JavaScript SDK v10 for Azure Storage"
+description: "Quickstart sample for the Azure Storage v10 SDK for JavaScript."
+languages:
+- javascript
+- nodejs
+products:
+- azure
+- azure-storage
+---
+
 # Quickstart - JavaScript SDK v10 for Azure Storage
 
 This repository implements the [quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
