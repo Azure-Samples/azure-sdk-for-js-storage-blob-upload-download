@@ -1,12 +1,8 @@
+const { AbortController } = require("@azure/abort-controller");
 const {
-    Aborter,
-    BlockBlobURL,
-    ContainerURL,
-    ServiceURL,
+    BlobServiceClient,
     SharedKeyCredential,
-    StorageURL,
-    uploadStreamToBlockBlob,
-    uploadFileToBlockBlob
+    newPipeline
 } = require('@azure/storage-blob');
 
 const fs = require("fs");
@@ -23,66 +19,61 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 const ONE_MINUTE = 60 * 1000;
 
-async function showContainerNames(aborter, serviceURL) {
-
-    let response;
-    let marker;
-
-    do {
-        response = await serviceURL.listContainersSegment(aborter, marker);
-        marker = response.marker;
-        for(let container of response.containerItems) {
-            console.log(` - ${ container.name }`);
-        }
-    } while (marker);
+async function showContainerNames(abortSignal, blobServiceClient) {
+    for await (let container of blobServiceClient.listContainers({ 
+        abortSignal: abortSignal
+    })) {
+        console.log(` - ${ container.name }`);
+    }
 }
 
-async function uploadLocalFile(aborter, containerURL, filePath) {
+async function uploadLocalFile(abortSignal, containerClient, filePath) {
 
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath);
-    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+    const blockBlobClient = containerClient.getBlockBlobClient(fileName);
 
-    return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
+    return await blockBlobClient.uploadFile(filePath, {
+        abortSignal: abortSignal
+    });
 }
 
-async function uploadStream(aborter, containerURL, filePath) {
+async function uploadStream(abortSignal, containerClient, filePath) {
 
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
-    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+    const blockBlobClient = containerClient.getBlockBlobClient(fileName);
 
     const stream = fs.createReadStream(filePath, {
       highWaterMark: FOUR_MEGABYTES,
     });
 
-    const uploadOptions = {
-        bufferSize: FOUR_MEGABYTES,
-        maxBuffers: 5,
-    };
-
-    return await uploadStreamToBlockBlob(
-                    aborter, 
-                    stream, 
-                    blockBlobURL, 
-                    uploadOptions.bufferSize, 
-                    uploadOptions.maxBuffers);
+    return await blockBlobClient.uploadStream(stream, FOUR_MEGABYTES, 5, {
+        abortSignal: abortSignal
+    });
 }
 
-async function showBlobNames(aborter, containerURL) {
+async function showBlobNames(abortSignal, containerClient) {
+    for await (let blob of containerClient.listBlobsFlat({
+        abortSignal: abortSignal
+    })) {
+        console.log(` - ${ blob.name }`);
+    }
+}
 
-    let response;
-    let marker;
-
-    do {
-        response = await containerURL.listBlobFlatSegment(aborter);
-        marker = response.marker;
-        for(let blob of response.segment.blobItems) {
-            console.log(` - ${ blob.name }`);
-        }
-    } while (marker);
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+        const chunks = [];
+        readableStream.on("data", (data) => {
+        chunks.push(data.toString());
+        });
+        readableStream.on("end", () => {
+        resolve(chunks.join(""));
+        });
+        readableStream.on("error", reject);
+    });
 }
 
 async function execute() {
@@ -93,40 +84,56 @@ async function execute() {
     const localFilePath = "./readme.md";
 
     const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
-    const pipeline = StorageURL.newPipeline(credentials);
-    const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
+    const pipeline = newPipeline(credentials);
+    const serviceURL = `https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`;
     
-    const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
-    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
+    const blobServiceClient = new BlobServiceClient(serviceURL, pipeline);
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     
-    const aborter = Aborter.timeout(30 * ONE_MINUTE);
+    const abortSignal = AbortController.timeout(30 * ONE_MINUTE);
 
     console.log("Containers:");
-    await showContainerNames(aborter, serviceURL);
+    await showContainerNames(abortSignal, blobServiceClient);
 
-    await containerURL.create(aborter);
+    await containerClient.create({
+        abortSignal: abortSignal
+    });
     console.log(`Container: "${containerName}" is created`);
 
-    await blockBlobURL.upload(aborter, content, content.length);
+    await blockBlobClient.upload(content, content.length, {
+        abortSignal: abortSignal
+    });
     console.log(`Blob "${blobName}" is uploaded`);
     
-    await uploadLocalFile(aborter, containerURL, localFilePath);
+    await uploadLocalFile(abortSignal, containerClient, localFilePath);
     console.log(`Local file "${localFilePath}" is uploaded`);
 
-    await uploadStream(aborter, containerURL, localFilePath);
+    await uploadStream(abortSignal, containerClient, localFilePath);
     console.log(`Local file "${localFilePath}" is uploaded as a stream`);
 
     console.log(`Blobs in "${containerName}" container:`);
-    await showBlobNames(aborter, containerURL);
+    await showBlobNames(abortSignal, containerClient);
 
-    const downloadResponse = await blockBlobURL.download(aborter, 0);
-    const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
+    const downloadResponse = await blockBlobClient.download(0, undefined, {
+        abortSignal: abortSignal
+    });
+    const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
+
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
-    await blockBlobURL.delete(aborter)
+    await blockBlobClient.delete({
+        abortSignal: abortSignal
+    });
     console.log(`Block blob "${blobName}" is deleted`);
     
-    await containerURL.delete(aborter);
+    // List blobs again to demonstrate that deletion was effective
+    console.log(`Blobs in "${containerName}" container:`);
+    await showBlobNames(abortSignal, containerClient);
+
+    await containerClient.delete({
+        abortSignal: abortSignal
+    });
     console.log(`Container "${containerName}" is deleted`);
 }
 
