@@ -51,7 +51,7 @@ async function uploadStream(aborter, containerURL, filePath) {
 
     filePath = path.resolve(filePath);
 
-    const fileName = path.basename(filePath).replace('.md', '-stream.md');
+    const fileName = path.basename(filePath).replace('.md', '-STREAM.md');
     const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
 
     const stream = fs.createReadStream(filePath, {
@@ -90,7 +90,7 @@ async function execute() {
     const containerName = "demo";
     const blobName = "quickstart.txt";
     const content = "hello!";
-    const localFilePath = "./readme.md";
+    const localFilePath = "./README.md";
 
     const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
     const pipeline = StorageURL.newPipeline(credentials);
