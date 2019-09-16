@@ -17,7 +17,7 @@ Two folders are referred to different version of Azure SDK.
   * [@types/dotenv v4.0.3](https://www.npmjs.com/package/@types/dotenv/v/4.0.3)
   * [dotenv v6.0.0](https://www.npmjs.com/package/dotenv/v/6.0.0)
 * azure-storage-js-v10-quickstart-v4 referenced to following packages:
-  * [@azure/storage-blob v12.0.0-preview.3](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0-preview.3)
-  * [@types/dotenv v6.1.1](https://www.npmjs.com/package/@types/dotenv/v/6.1.1)
-  * [dotenv v6.2.0](https://www.npmjs.com/package/dotenv/v/6.2.0)
+  * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
+  * [@types/dotenv](https://www.npmjs.com/package/@types/dotenv)
+  * [dotenv](https://www.npmjs.com/package/dotenv)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
