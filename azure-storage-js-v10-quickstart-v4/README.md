@@ -24,7 +24,7 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 Then, switch to the appropriate folder:
 
 ```bash
-cd azure-storage-js-v10-quickstart
+cd azure-storage-js-v10-quickstart-v4
 ```
 
 Next, install the dependencies:
