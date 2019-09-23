@@ -24,21 +24,18 @@ const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 const ONE_MINUTE = 60 * 1000;
 
 async function showContainerNames(aborter, serviceURL) {
-
-    let response;
-    let marker;
+    let marker = undefined;
 
     do {
-        response = await serviceURL.listContainersSegment(aborter, marker);
-        marker = response.marker;
-        for(let container of response.containerItems) {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
             console.log(` - ${ container.name }`);
         }
     } while (marker);
 }
 
 async function uploadLocalFile(aborter, containerURL, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath);
@@ -48,7 +45,6 @@ async function uploadLocalFile(aborter, containerURL, filePath) {
 }
 
 async function uploadStream(aborter, containerURL, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
@@ -72,17 +68,29 @@ async function uploadStream(aborter, containerURL, filePath) {
 }
 
 async function showBlobNames(aborter, containerURL) {
-
-    let response;
-    let marker;
+    let marker = undefined;
 
     do {
-        response = await containerURL.listBlobFlatSegment(aborter);
-        marker = response.marker;
-        for(let blob of response.segment.blobItems) {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
             console.log(` - ${ blob.name }`);
         }
     } while (marker);
+}
+
+// A helper method used to read a Node.js readable stream into string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
 }
 
 async function execute() {
@@ -101,11 +109,11 @@ async function execute() {
     
     const aborter = Aborter.timeout(30 * ONE_MINUTE);
 
-    console.log("Containers:");
-    await showContainerNames(aborter, serviceURL);
-
     await containerURL.create(aborter);
     console.log(`Container: "${containerName}" is created`);
+
+    console.log("Containers:");
+    await showContainerNames(aborter, serviceURL);
 
     await blockBlobURL.upload(aborter, content, content.length);
     console.log(`Blob "${blobName}" is uploaded`);
@@ -120,7 +128,7 @@ async function execute() {
     await showBlobNames(aborter, containerURL);
 
     const downloadResponse = await blockBlobURL.download(aborter, 0);
-    const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
+    const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
     await blockBlobURL.delete(aborter)
