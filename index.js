@@ -128,7 +128,7 @@ async function execute() {
     await showBlobNames(aborter, containerURL);
 
     const downloadResponse = await blockBlobURL.download(aborter, 0);
-    const downloadedContent = await streamToString(downloadResponse.readableStreamBody); //.read(content.length).toString();
+    const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
     await blockBlobURL.delete(aborter)
