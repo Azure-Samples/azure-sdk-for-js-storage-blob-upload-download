@@ -95,7 +95,7 @@ async function streamToString(readableStream) {
 
 async function execute() {
 
-    const containerName = "quickstart";
+    const containerName = "demo";
     const blobName = "quickstart.txt";
     const content = "hello!";
     const localFilePath = "./readme.md";
