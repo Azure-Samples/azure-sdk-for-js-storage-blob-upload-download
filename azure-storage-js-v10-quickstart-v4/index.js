@@ -70,6 +70,20 @@ async function showBlobNames(aborter, containerClient) {
     }
 }
 
+    // [Node.js only] A helper method used to read a Node.js readable stream into string
+    async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", (data) => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+  }
+
 async function execute() {
 
     const containerName = "demo";
@@ -87,15 +101,12 @@ async function execute() {
     
     const aborter = AbortController.timeout(30 * ONE_MINUTE);
 
-    console.log("Containers:");
-
-    await showContainerNames(aborter, blobServiceClient);
-
-
     await containerClient.create();
     console.log(`Container: "${containerName}" is created`);
 
-
+    console.log("Containers:");
+    await showContainerNames(aborter, blobServiceClient);
+    
     await blockBlobClient.upload(content, content.length, aborter);
     console.log(`Blob "${blobName}" is uploaded`);
     
@@ -111,19 +122,7 @@ async function execute() {
 
     const downloadResponse = await blockBlobClient.download(0,aborter);
     const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
-    // [Node.js only] A helper method used to read a Node.js readable stream into string
-    async function streamToString(readableStream) {
-    return new Promise((resolve, reject) => {
-      const chunks = [];
-      readableStream.on("data", (data) => {
-        chunks.push(data.toString());
-      });
-      readableStream.on("end", () => {
-        resolve(chunks.join(""));
-      });
-      readableStream.on("error", reject);
-    });
-  }
+
     console.log(`Downloaded blob content: "${downloadedContent}"`);
 
     await blockBlobClient.delete(aborter);
