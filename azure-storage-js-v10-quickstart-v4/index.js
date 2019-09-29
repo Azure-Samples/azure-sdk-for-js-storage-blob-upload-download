@@ -26,7 +26,6 @@ async function showContainerNames(aborter, blobServiceClient) {
 }
 
 async function uploadLocalFile(aborter, containerClient, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath);
@@ -38,7 +37,6 @@ async function uploadLocalFile(aborter, containerClient, filePath) {
 }
 
 async function uploadStream(aborter, containerClient, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
@@ -70,8 +68,8 @@ async function showBlobNames(aborter, containerClient) {
     }
 }
 
-    // [Node.js only] A helper method used to read a Node.js readable stream into string
-    async function streamToString(readableStream) {
+// [Node.js only] A helper method used to read a Node.js readable stream into string
+async function streamToString(readableStream) {
     return new Promise((resolve, reject) => {
       const chunks = [];
       readableStream.on("data", (data) => {
@@ -82,7 +80,7 @@ async function showBlobNames(aborter, containerClient) {
       });
       readableStream.on("error", reject);
     });
-  }
+}
 
 async function execute() {
 
