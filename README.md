@@ -88,7 +88,7 @@ Container "demo" is deleted
 Done
 ```
 
-# Folders introduction
+# Azure SDK versions
 You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
 * azure-storage-js-v10-quickstart-v3 referenced to following packages:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
