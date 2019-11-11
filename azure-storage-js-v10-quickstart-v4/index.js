@@ -18,7 +18,6 @@ const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 const ONE_MINUTE = 60 * 1000;
 
 async function showContainerNames(aborter, blobServiceClient) {
-
     let iter = await blobServiceClient.listContainers(aborter);
     for await (const container of iter) {
       console.log(` - ${container.name}`);
