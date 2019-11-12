@@ -36,6 +36,7 @@ Step 2 : Copy and save keys.
 ## Set up
 
 1.Clone
+
 Clone the repository on your machine:
 
 ```bash
@@ -43,6 +44,7 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
 2.Switch Folder
+
 Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v3" and "azure-storage-js-v10-quickstart-v4":
 
 ```bash
@@ -54,6 +56,7 @@ cd azure-storage-js-v10-quickstart-v4
 ```
 
 3.Install Dependencies
+
 Next, install the dependencies:
 
     npm install
