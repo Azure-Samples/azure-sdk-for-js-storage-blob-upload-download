@@ -31,7 +31,7 @@ Step 1 : Create a new general-purpose storage account to use for this tutorial.
  
 Step 2 : Copy and save keys.
  
- * After your storage account is created, it is pinned to the dashboard. Click on it to open it. Under SETTINGS, click **Access keys**. Select a key and copy the **key1** to the clipboard, then paste it into text editor for later use.
+ * After your storage account is created, click on it to open it. Select **Settings** > **Access keys** > **Primary Key**, copy the associated **Connection string** to the clipboard, then paste it into a text editor for later use.
 
 ## Set up
 
