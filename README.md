@@ -31,7 +31,7 @@ Step 1 : Create a new general-purpose storage account to use for this tutorial.
  
 Step 2 : Copy and save keys.
  
- * After your storage account is created, click on it to open it. Select **Settings** > **Access keys** > **Primary Key**, copy the associated **Connection string** to the clipboard, then paste it into a text editor for later use.
+ * After your storage account is created, click on it to open it. Select **Settings** > **Access keys** > **Key1**, copy the associated **Connection string** to the clipboard, then paste it into a text editor for later use.
 
 ## Set up
 
@@ -91,7 +91,7 @@ Container "demo" is deleted
 Done
 ```
 
-# Folder introduction
+# Folder Introduction
 You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
 * To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4] please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
