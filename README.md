@@ -31,11 +31,12 @@ Step 1 : Create a new general-purpose storage account to use for this tutorial.
  
 Step 2 : Copy and save keys.
  
- * After your storage account is created, it is pinned to the dashboard. Click on it to open it. Under SETTINGS, click **Access keys**. Select a key and copy the **key1** to the clipboard, then paste it into text editor for later use.
+ * After your storage account is created, click on it to open it. Select **Settings** > **Access keys** > **Key1**, copy the associated **Connection string** to the clipboard, then paste it into a text editor for later use.
 
 ## Set up
 
 1.Clone
+
 Clone the repository on your machine:
 
 ```bash
@@ -43,6 +44,7 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
 2.Switch Folder
+
 Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v3" and "azure-storage-js-v10-quickstart-v4":
 
 ```bash
@@ -54,6 +56,7 @@ cd azure-storage-js-v10-quickstart-v4
 ```
 
 3.Install Dependencies
+
 Next, install the dependencies:
 
     npm install
@@ -88,10 +91,10 @@ Container "demo" is deleted
 Done
 ```
 
-# Azure SDK versions
+# Folder Introduction
 You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
-* azure-storage-js-v10-quickstart-v3 referenced to following packages:
-  * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
-* azure-storage-js-v10-quickstart-v4 referenced to following packages:
+* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4] please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
+* For the previous stable Azure SDK version [azure-storage-js-v10-quickstart-v3] please add the following dependency:
+  * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
