@@ -14,6 +14,14 @@ products:
 
 This repository implements the [Quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
 
+# SDK Versions
+You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
+* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4](./azure-storage-js-v10-quickstart-v4) please add the following dependency:
+  * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
+  * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
+* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v3](./azure-storage-js-v10-quickstart-v3) please add the following dependency:
+  * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
+
 # Prerequisites
 Step 1 : Create a new general-purpose storage account to use for this tutorial. 
  
@@ -90,11 +98,3 @@ Block blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
-
-# SDK Versions
-You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
-* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4](./azure-storage-js-v10-quickstart-v4) please add the following dependency:
-  * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
-  * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v3](./azure-storage-js-v10-quickstart-v3) please add the following dependency:
-  * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
