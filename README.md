@@ -93,8 +93,8 @@ Done
 
 # SDK Versions
 You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
-* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4] please add the following dependency:
+* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4](https://github.com/tzhanl/azure-storage-js-v10-quickstart/tree/newbranch2/azure-storage-js-v10-quickstart-v4) please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v3] please add the following dependency:
+* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v3](https://github.com/tzhanl/azure-storage-js-v10-quickstart/tree/newbranch2/azure-storage-js-v10-quickstart-v3) please add the following dependency:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
