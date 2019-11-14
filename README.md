@@ -21,7 +21,7 @@ Step 1 : Create a new general-purpose storage account to use for this tutorial.
 *  Select **New** > **Storage** > **Storage account**. 
 *  Select your Subscription. 
 *  For `Resource group`, create a new one and give it a unique name. 
-*  Enter a name for your storage account. The name must be between 3 and 24 characters in length and may contain numbers and lowercase letters only. It must also be unique.
+*  Enter a name for your storage account.
 *  Select the `Location` to use for your Storage Account.
 *  Set `Account kind` to **StorageV2(general purpose v2)**.
 *  Set `Performance` to **Standard**. 
@@ -85,16 +85,16 @@ Blobs in "demo" container:
  - quickstart.txt
  - readme-stream.md
  - readme.md
-Downloaded blob content: "hello Node SDK"
+Downloaded blob content: "Hello Node SDK"
 Block blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
 
-# Folder Introduction
+# SDK Versions
 You will find the following folders: key-vault-node-quickstart-v3, which references the version 3.0 SDK and keyvault-node-quickstart-v4, which uses the 4.0 version of the SDK.
 * To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v4] please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous stable Azure SDK version [azure-storage-js-v10-quickstart-v3] please add the following dependency:
+* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v3] please add the following dependency:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
