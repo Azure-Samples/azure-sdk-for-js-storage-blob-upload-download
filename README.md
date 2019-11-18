@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 
 2.Switch Folder
 
-Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v3" and "azure-storage-js-v10-quickstart-v4":
+Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v10" and "azure-storage-js-v10-quickstart-v12":
 
 ```bash
 cd azure-storage-js-v10-quickstart-v10
