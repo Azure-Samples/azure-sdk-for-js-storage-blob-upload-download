@@ -15,7 +15,10 @@ products:
 This repository implements the [Quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
 
 # SDK Versions
-You will find the following folders: azure-storage-js-v10-quickstart-v10, which references the version 10.0 SDK and azure-storage-js-v10-quickstart-v12, which uses the 12.0 version of the SDK.
+You will find the following folders: 
+* **azure-storage-js-v10-quickstart-v10** - references Key Vault SDK v10.0
+* **azure-storage-js-v10-quickstart-v12** - references Key Vault SDK v12.0
+
 * To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v12](./azure-storage-js-v10-quickstart-v12) please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
@@ -53,7 +56,7 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 
 2.Switch Folder
 
-Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v10" and "azure-storage-js-v10-quickstart-v12":
+Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v10" or "azure-storage-js-v10-quickstart-v12":
 
 ```bash
 cd azure-storage-js-v10-quickstart-v10
