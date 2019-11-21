@@ -1,5 +1,5 @@
 const {
-    SharedKeyCredential,
+    StorageSharedKeyCredential,
     BlobServiceClient
     } = require('@azure/storage-blob');
 const {AbortController} = require('@azure/abort-controller');
@@ -88,7 +88,7 @@ async function execute() {
     const content = "Hello Node SDK";
     const localFilePath = "./readme.md";
 
-    const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
+    const credentials = new StorageSharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
 
     const blobServiceClient = new BlobServiceClient(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`,credentials);
 
