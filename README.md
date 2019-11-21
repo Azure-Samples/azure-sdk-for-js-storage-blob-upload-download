@@ -91,7 +91,7 @@ Containers:
  - container-b
 Container: "demo" is created
 Blob "quickstart.txt" is uploaded
-Local file "./readme.md" is uploaded
+Local file "../readme.md" is uploaded
 Blobs in "demo" container:
  - quickstart.txt
  - readme-stream.md
