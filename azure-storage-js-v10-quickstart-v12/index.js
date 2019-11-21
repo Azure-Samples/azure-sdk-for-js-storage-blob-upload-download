@@ -86,7 +86,7 @@ async function execute() {
     const containerName = "demo";
     const blobName = "quickstart.txt";
     const content = "Hello Node SDK";
-    const localFilePath = "./readme.md";
+    const localFilePath = "../readme.md";
 
     const credentials = new StorageSharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
 
