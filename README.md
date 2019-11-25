@@ -12,7 +12,7 @@ urlFragment:
 - upload-download-blobs-javascript
 ---
 
-# Quickstart - JavaScript SDK v10 for Azure Storage
+# How to upload and download blobs from Azure Blob Storage with JavaScript
 
 This repository implements the [Quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
 
