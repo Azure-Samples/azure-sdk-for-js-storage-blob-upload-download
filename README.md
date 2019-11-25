@@ -18,13 +18,13 @@ This repository implements the [Quickstart](http://docs.microsoft.com/azure/stor
 
 # SDK Versions
 You will find the following folders: 
-* **upload-download-blobs-javascript-v10** - references Key Vault SDK v10.0
-* **upload-download-blobs-javascript-v12** - references Key Vault SDK v12.0
+* **azure-sdk-for-js-storage-blob-upload-download-v10** - references Key Vault SDK v10.0
+* **azure-sdk-for-js-storage-blob-upload-download-v12** - references Key Vault SDK v12.0
 
-* To use the latest Azure SDK version [upload-download-blobs-javascript-v12](./upload-download-blobs-javascript-v12) please add the following dependency:
+* To use the latest Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v12](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v12) please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous Azure SDK version [upload-download-blobs-javascript-v10](./upload-download-blobs-javascript-v10) please add the following dependency:
+* For the previous Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v10](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v10) please add the following dependency:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
 
 # Prerequisites
@@ -61,11 +61,11 @@ git clone https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-
 Then, switch to the appropriate folder "upload-download-blobs-javascript-v10" or "upload-download-blobs-javascript-v12":
 
 ```bash
-cd upload-download-blobs-javascript-v10
+cd azure-sdk-for-js-storage-blob-upload-download-v10
 ```
 
 ```bash
-cd upload-download-blobs-javascript-v12
+cd azure-sdk-for-js-storage-blob-upload-download-v12
 ```
 
 3.Install Dependencies
@@ -74,7 +74,7 @@ Next, install the dependencies:
 
     npm install
 
-Finally, rename the file `.env.example` to `.env` and add your values for *AZURE_STORAGE_ACCOUNT_NAME* by using the name of your storage account and *AZURE_STORAGE_ACCOUNT_ACCESS_KEY* which you had copied from **key1** and pasted in the text editor earlier.
+Finally, rename the file `.env.example` to `.env` and add your values for *AZURE_STORAGE_ACCOUNT_NAME* by using the name of your storage account and *AZURE_STORAGE_ACCOUNT_ACCESS_KEY* which you had copied from **Key1** and pasted in the text editor earlier.
 
 
 ## Running the sample
