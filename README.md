@@ -1,13 +1,15 @@
 ---
 page_type: sample
 name: "Using the Azure Storage JavaScript SDK V10"
-description: "Quickstart sample for the Azure Storage v10 SDK for JavaScript."
+description: "This sample shows you how to upload and download blobs from Azure Blob Storage with JavaScript."
 languages:
 - javascript
 - nodejs
 products:
 - azure
 - azure-storage
+urlFragment:
+- upload-download-blobs-javascript
 ---
 
 # Quickstart - JavaScript SDK v10 for Azure Storage
