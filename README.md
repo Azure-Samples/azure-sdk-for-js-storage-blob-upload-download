@@ -18,13 +18,13 @@ This repository implements the [Quickstart](http://docs.microsoft.com/azure/stor
 
 # SDK Versions
 You will find the following folders: 
-* **azure-storage-js-v10-quickstart-v10** - references Key Vault SDK v10.0
-* **azure-storage-js-v10-quickstart-v12** - references Key Vault SDK v12.0
+* **upload-download-blobs-javascript-v10** - references Key Vault SDK v10.0
+* **upload-download-blobs-javascript-v12** - references Key Vault SDK v12.0
 
-* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v12](./azure-storage-js-v10-quickstart-v12) please add the following dependency:
+* To use the latest Azure SDK version [upload-download-blobs-javascript-v12](./upload-download-blobs-javascript-v12) please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v10](./azure-storage-js-v10-quickstart-v10) please add the following dependency:
+* For the previous Azure SDK version [upload-download-blobs-javascript-v10](./upload-download-blobs-javascript-v10) please add the following dependency:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
 
 # Prerequisites
@@ -61,11 +61,11 @@ git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v10" or "azure-storage-js-v10-quickstart-v12":
 
 ```bash
-cd azure-storage-js-v10-quickstart-v10
+cd upload-download-blobs-javascript-v10
 ```
 
 ```bash
-cd azure-storage-js-v10-quickstart-v12
+cd upload-download-blobs-javascript-v12
 ```
 
 3.Install Dependencies
