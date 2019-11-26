@@ -1,28 +1,30 @@
 ---
 page_type: sample
 name: "Using the Azure Storage JavaScript SDK V10"
-description: "Quickstart sample for the Azure Storage v10 SDK for JavaScript."
+description: "This sample shows you how to upload and download blobs from Azure Blob Storage with JavaScript."
 languages:
 - javascript
 - nodejs
 products:
 - azure
 - azure-storage
+urlFragment:
+- upload-download-blobs-javascript
 ---
 
-# Quickstart - JavaScript SDK v10 for Azure Storage
+# How to upload and download blobs from Azure Blob Storage with JavaScript
 
 This repository implements the [Quickstart](http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10) sample for the [Azure Storage v10 SDK for JavaScript](https://github.com/Azure/azure-storage-js).
 
 # SDK Versions
 You will find the following folders: 
-* **azure-storage-js-v10-quickstart-v10** - references Key Vault SDK v10.0
-* **azure-storage-js-v10-quickstart-v12** - references Key Vault SDK v12.0
+* **azure-sdk-for-js-storage-blob-upload-download-v10** - references Key Vault SDK v10.0
+* **azure-sdk-for-js-storage-blob-upload-download-v12** - references Key Vault SDK v12.0
 
-* To use the latest Azure SDK version [azure-storage-js-v10-quickstart-v12](./azure-storage-js-v10-quickstart-v12) please add the following dependency:
+* To use the latest Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v12](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v12) please add the following dependency:
   * [@azure/storage-blob](https://www.npmjs.com/package/@azure/storage-blob)
   * [@azure/abort-controller](https://www.npmjs.com/package/@azure/abort-controller)
-* For the previous Azure SDK version [azure-storage-js-v10-quickstart-v10](./azure-storage-js-v10-quickstart-v10) please add the following dependency:
+* For the previous Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v10](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v10) please add the following dependency:
   * [@azure/storage-blob v10.5.0](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0)
 
 # Prerequisites
@@ -51,19 +53,19 @@ Step 2 : Copy and save keys.
 Clone the repository on your machine:
 
 ```bash
-git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git 
+git clone https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download.git 
 ```
 
 2.Switch Folder
 
-Then, switch to the appropriate folder "azure-storage-js-v10-quickstart-v10" or "azure-storage-js-v10-quickstart-v12":
+Then, switch to the appropriate folder "upload-download-blobs-javascript-v10" or "upload-download-blobs-javascript-v12":
 
 ```bash
-cd azure-storage-js-v10-quickstart-v10
+cd azure-sdk-for-js-storage-blob-upload-download-v10
 ```
 
 ```bash
-cd azure-storage-js-v10-quickstart-v12
+cd azure-sdk-for-js-storage-blob-upload-download-v12
 ```
 
 3.Install Dependencies
@@ -72,7 +74,7 @@ Next, install the dependencies:
 
     npm install
 
-Finally, rename the file `.env.example` to `.env` and add your values for *AZURE_STORAGE_ACCOUNT_NAME* by using the name of your storage account and *AZURE_STORAGE_ACCOUNT_ACCESS_KEY* which you had copied from **key1** and pasted in the text editor earlier.
+Finally, rename the file `.env.example` to `.env` and add your values for *AZURE_STORAGE_ACCOUNT_NAME* by using the name of your storage account and *AZURE_STORAGE_ACCOUNT_ACCESS_KEY* which you had copied from **Key1** and pasted in the text editor earlier.
 
 
 ## Running the sample
