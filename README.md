@@ -7,8 +7,7 @@ products:
 - azure
 - azure-storage
 description: "How to upload and download blobs from Azure Blob Storage with JavaScript."
-urlFragment:
-- upload-download-blobs-javascript
+urlFragment: upload-download-blobs-javascript
 ---
 
 # How to upload and download blobs from Azure Blob Storage with JavaScript
