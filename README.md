@@ -15,7 +15,7 @@ urlFragment:
 
 This repository implements the [Quickstart] sample for the [Azure Storage v10 SDK for JavaScript].
 
-# SDK Versions
+## SDK Versions
 You will find the following folders: 
 * **azure-sdk-for-js-storage-blob-upload-download-v10** - references Key Vault SDK v10
 * **azure-sdk-for-js-storage-blob-upload-download-v12** - references Key Vault SDK v12
@@ -26,7 +26,7 @@ You will find the following folders:
 * For the previous Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v10] please add the following dependency:
   * [@azure/storage-blob v10.5.0]
 
-# Prerequisites
+## Prerequisites
 Step 1 : Create a new general-purpose storage account to use for this tutorial. 
  
 *  Go to the [Azure Portal] and log in using your Azure account. 
