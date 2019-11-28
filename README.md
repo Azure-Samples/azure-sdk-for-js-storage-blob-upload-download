@@ -19,12 +19,6 @@ You will find the following folders:
 * **azure-sdk-for-js-storage-blob-upload-download-v10** - references Key Vault SDK v10
 * **azure-sdk-for-js-storage-blob-upload-download-v12** - references Key Vault SDK v12
 
-* To use the latest Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v12] please add the following dependency:
-  * [@azure/storage-blob]
-  * [@azure/abort-controller]
-* For the previous Azure SDK version [azure-sdk-for-js-storage-blob-upload-download-v10] please add the following dependency:
-  * [@azure/storage-blob v10.5.0]
-
 ## Prerequisites
 Step 1 : Create a new general-purpose storage account to use for this tutorial. 
  
@@ -105,9 +99,4 @@ Done
 <!-- LINKS --> 
 [Quickstart]: http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10
 [Azure Storage v10 SDK for JavaScript]: https://github.com/Azure/azure-storage-js
-[azure-sdk-for-js-storage-blob-upload-download-v12]: https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v12
-[@azure/storage-blob]: https://www.npmjs.com/package/@azure/storage-blob
-[@azure/abort-controller]: https://www.npmjs.com/package/@azure/abort-controller
-[azure-sdk-for-js-storage-blob-upload-download-v10]: https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-download/tree/master/azure-sdk-for-js-storage-blob-upload-download-v10
-[@azure/storage-blob v10.5.0]: https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0
 [Azure Portal]: https://portal.azure.com
