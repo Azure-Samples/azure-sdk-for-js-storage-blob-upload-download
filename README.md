@@ -53,11 +53,11 @@ git clone https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-
 Then, switch to the appropriate folder "upload-download-blobs-javascript-v10" or "upload-download-blobs-javascript-v12":
 
 ```bash
-cd azure-sdk-for-js-storage-blob-upload-download-v10
+cd v10
 ```
 
 ```bash
-cd azure-sdk-for-js-storage-blob-upload-download-v12
+cd v12
 ```
 
 3.Install Dependencies
