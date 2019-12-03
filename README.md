@@ -50,11 +50,13 @@ git clone https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-upload-
 
 2.Switch Folder
 
-Then, switch to the appropriate folder "v10" or "v12":
+Then, switch to the appropriate folder:
 
 ```bash
 cd v10
 ```
+
+or
 
 ```bash
 cd v12
