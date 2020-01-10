@@ -98,7 +98,7 @@ Container "demo" is deleted
 Done
 ```
 
-<!-- LINKS --> 
+<!-- LINKS  --> 
 [Quickstart]: http://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs-v10
 [Azure Storage v10 SDK for JavaScript]: https://github.com/Azure/azure-storage-js
 [Azure Portal]: https://portal.azure.com
