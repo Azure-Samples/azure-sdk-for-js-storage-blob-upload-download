@@ -87,11 +87,11 @@ Containers:
  - container-b
 Container: "demo" is created
 Blob "quickstart.txt" is uploaded
-Local file "../readme.md" is uploaded
+Local file "../README.md" is uploaded
 Blobs in "demo" container:
  - quickstart.txt
- - readme-stream.md
- - readme.md
+ - README-STREAM.md
+ - README.md
 Downloaded blob content: "Hello Node SDK"
 Block blob "quickstart.txt" is deleted
 Container "demo" is deleted
