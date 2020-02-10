@@ -34,6 +34,8 @@ Step 1 : Create a new general-purpose storage account to use for this tutorial.
 *  Set `Secure transfer required` to **Disabled**.
 *  Check **Review + create** and click **Create** to create your Storage Account. 
  
+ > NOTE: Disabling secure transfer is for sample purposes only to allow requests originating from an insecure connection to the storage API. Microsoft recommends that you always require [secure transfer](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) for all of your storage accounts.
+ 
 Step 2 : Copy and save keys.
  
  * After your storage account is created, click on it to open it. Select **Settings** > **Access keys** > **Key1**, copy the associated **Connection string** to the clipboard, then paste it into a text editor for later use.
